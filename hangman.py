@@ -4,7 +4,6 @@ import re
 hangman_list = open('wordlist.txt').read().splitlines() # reads the file "wordlist.txt" and put it as a list
 shuffled_word = random.choice(hangman_list) # take at random a word from the list
 shuffled_word = shuffled_word.lower()
-print(shuffled_word)
 hidden_word = ''
 for x in shuffled_word:
     hidden_word = hidden_word + '_'
@@ -21,7 +20,6 @@ def ask():
     global tries
     global hidden_word
     while(tries < 7 ):
-        print(tries, 'while')
         i = 0
         wrongLetters = []
         for x in shuffled_word:
@@ -31,7 +29,6 @@ def ask():
             regex = re.findall("[a-z]", ask_letter)
             if(len(ask_letter) == 1 and regex):
                 if(ask_letter in shuffled_word):
-                    print('you guessed right')
                     letterLength = 0
                     for x in shuffled_word:
                         if(x==ask_letter):
@@ -41,7 +38,6 @@ def ask():
                     wrongLetters.append(ask_letter+ ',')
                     print("you're gay")
                     tries += 1
-                    print(tries)
                     if(tries == 7):
                         lose()
                 i += 1
@@ -54,7 +50,6 @@ def ask():
                 lose()
     else:
         print('you dumb as fuck')
-#    if ask_letter: # looking for the input to be no more than 1 letter
 
 def lose():
     print('u lose kill youself')
